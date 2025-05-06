@@ -1,0 +1,140 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a3a 0%, #0a0a20 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Customer Info Container */
+.customer-info-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffdd00;
+    margin-bottom: 30px;
+}
+
+/* Section Styles */
+.info-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a3a;
+    margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form-label {
+    font-weight: 500;
+    color: #1a1a3a;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #1a1a3a;
+    background-color: #ffffff;
+}
+
+.form-control:focus {
+    border-color: #1a1a3a;
+    box-shadow: 0 0 0 0.25rem rgba(26, 26, 58, 0.25);
+}
+
+/* Required Field Indicator */
+.required {
+    color: #dc3545;
+    margin-left: 2px;
+}
+
+/* Button Styles */
+.btn-save {
+    background-color: #1a1a3a;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #2a2a5a;
+    transform: translateY(-2px);
+}
+
+.btn-change-password {
+    background-color: #1a1a3a;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-change-password:hover {
+    background-color: #2a2a5a;
+    transform: translateY(-2px);
+}
+
+/* Date Input Styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.7rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .info-section {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .info-section {
+        padding: 15px;
+    }
+    
+    .btn-save, .btn-change-password {
+        width: 100%;
+    }
+}

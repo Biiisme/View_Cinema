@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style1.css">
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <div class="container">
+        <form class="register-form" id="loginform">
+            <h1>ĐĂNG NHẬP</h1>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button> <!-- Không cần <a> nữa -->
+            <div class="dangky">
+                <p>Không có tài khoản ?<a href="dangki.html"> Đăng ký tại đây</a></p>
+                
+            </div>
+            <a href="#">Quên mật khẩu</a>
+            <!-- Phần hiển thị thông báo -->
+             <div id="responseMessage"></div>
+        </form>
+        <div class="image-section">
+            <img src="IMG/logo.png" alt="Cute monster with popcorn and drink">
+        </div>
+    </div>
+
+    <script>
+        // Hàm xử lý gửi dữ liệu từ form đăng nhập đến API
+        document.getElementById('loginform').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn việc submit form truyền thống
+
+            // Lấy giá trị từ các trường nhập liệu
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Dữ liệu cần gửi
+            const formData = {
+                Email: email,  // Gửi đúng trường Email
+                Password: password
+            };
+
+            // Gọi API đăng nhập
+            fetch('http://localhost:3000/api/user/sign-in', { // URL API đăng nhập
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData) // Chuyển dữ liệu thành JSON
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hiển thị toàn bộ phản hồi để debug
+                console.log('data.StatusCode ===> ', data.StatusCode);
+                
+                // Kiểm tra phản hồi từ API
+                if (data.StatusCode === 200) { // Kiểm tra nếu đăng nhập thành công
+                    // Chuyển hướng sang trang khác sau khi đăng nhập thành công
+                    console.log("token ====> ", data.Data.token);
+                    localStorage.setItem("token", data.Data.token);
+                    localStorage.setItem("username", data.Data.user.fullName);
+                    localStorage.setItem("user_id", data.Data.user.user_id);
+                    window.location.href = 'movie_home.html'; // Trang bạn muốn chuyển đến
+
+                } else {
+                    // Hiển thị thông báo lỗi nếu đăng nhập thất bại
+                    document.getElementById('responseMessage').innerText = data.Message || 'Đăng nhập thất bại!';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').innerText = 'Đã xảy ra lỗi trong quá trình đăng nhập.';
+            });
+        });
+    </script>
+    
+</body>
+</html>

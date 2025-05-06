@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÌM XÁC: MA KHÔNG ĐẦU (T18) - Movie Details</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/movie_detail.css">
+    <link rel="stylesheet" href="CSS/seat.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="JSON/header-component.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header-component></header-component>
+
+    <div class="movie-details-container">
+        <div class="container py-5">
+            <div class="row">
+                <!-- Movie Poster Column -->
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="movie-poster-container">
+                        <!-- Age Rating Badge -->
+                        <div class="age-rating-badge">
+                            <div class="rating-icon">2D</div>
+                            <div class="rating-text" id="ratingText">T18</div>
+                        </div>
+    
+                        <!-- Movie Poster -->
+                        <img id="moviePoster" src="" alt="Movie Poster" class="img-fluid movie-poster">
+    
+                        <!-- Release Date -->
+                        <div class="release-date">
+                            <span id="releaseDate"></span>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Movie Details Column -->
+                <div class="col-lg-7">
+                    <div class="movie-details">
+                        <!-- Movie Title -->
+                        <h1 class="movie-title" id="movieTitle"></h1>
+    
+                        <!-- Movie Info List -->
+                        <ul class="movie-info-list">
+                            <li>
+                                <i class="fas fa-laugh-squint text-warning"></i>
+                                <span id="movieGenre"></span>
+                            </li>
+                            <li>
+                                <i class="far fa-clock text-warning"></i>
+                                <span id="movieDuration"></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe text-warning"></i>
+                                <span id="movieCountry"></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-language text-warning"></i>
+                                <span id="movieLanguage"></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-users text-warning"></i>
+                                <span id="movieAgeRating" class="age-rating"></span>
+                            </li>
+                        </ul>
+    
+                        <!-- Movie Description Section -->
+                        <div class="movie-description">
+                            <h2 class="section-title">MÔ TẢ</h2>
+                            <p><strong>Đạo diễn:</strong> <span id="movieDirector"></span></p>
+                            <p><strong>Diễn viên:</strong> <span id="movieCast"></span></p>
+                            <p><strong>Khởi chiếu:</strong> <span id="moviePremiere"></span></p>
+                        </div>
+    
+                        <!-- Movie Plot Section -->
+                        <div class="movie-plot">
+                            <h2 class="section-title">NỘI DUNG PHIM</h2>
+                            <p id="moviePlot"></p>
+                            <a href="#" class="read-more">Xem thêm</a>
+                        </div>
+    
+                        <!-- Watch Trailer Button -->
+                        <div class="trailer-button-container">
+                            <a href="#" id="trailerLink" class="btn btn-trailer" target="_blank">
+                                <i class="fas fa-play-circle"></i> Xem Trailer
+                            </a>
+                        </div>
+
+                        <div id="trailerContainer" class="ratio ratio-16x9 mt-3" style="display: none;">
+                            <iframe id="trailerVideo" src="" title="Trailer Video"
+                                allowfullscreen allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        <div class="container py-5">
+            <!-- Showtimes Header -->
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="showtimes-title">LỊCH CHIẾU</h1>
+                </div>
+            </div>
+            
+            <!-- Date Selection -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-12 col-md-8 col-lg-6">
+                <div class="date-selection">
+                    <div class="row g-3" id="dateList">
+                    <!-- date-card sẽ được render bằng JS -->
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <!-- Theater List Section -->
+            <div class="row mb-4">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <h2 class="theater-list-title">DANH SÁCH RẠP</h2>
+                    
+                    <!-- Location Dropdown -->
+                    <div class="location-dropdown">
+                        <select class="form-select">
+                            <option selected>HUẾ</option>
+                            <option>HÀ NỘI</option>
+                            <option>TP. HỒ CHÍ MINH</option>
+                            <option>ĐÀ NẴNG</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Theater Details -->
+            <div class="theater-details" id="scheduleContainer">
+                
+            </div>
+        </div>
+
+        <div class="container py-5">
+           
+            
+            <div id="selection_seat"></div>
+            </div>
+            
+            <!-- Continue Button (Optional) -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-continue" id="holdSeatBtn">TIẾP TỤC</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="seatList"></div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="JSON/movie_detail.js"></script>
+  
+</body>
+</html>

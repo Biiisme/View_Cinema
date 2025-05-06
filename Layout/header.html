@@ -1,0 +1,99 @@
+<style>
+header {
+    background-color: #0a0e1a;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ticket-buttons .btn {
+    background-color: #6a3de8;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+.search-container .form-control {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px 0 0 20px;
+}
+
+.search-container .btn {
+    border-radius: 0 20px 20px 0;
+    background-color: #ffffff;
+    color: #0a0e1a;
+}
+
+.login-container .btn, .dropdown .btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+</style>
+<header class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="movie_home.html">
+            <img src="https://cinestar.com.vn/_next/image/?url=%2Fassets%2Fimages%2Fheader-logo.png&w=1920&q=75" alt="Cinestar Logo" height="50">
+        </a>
+        
+        <!-- Ticket Buttons -->
+        <div class="d-flex ticket-buttons">
+            <a href="#" class="btn btn-primary me-2">
+                <i class="fas fa-ticket-alt"></i> ĐẶT VÉ NGAY
+            </a>
+            <a href="#" class="btn btn-primary">
+                <i class="fas fa-popcorn"></i> ĐẶT BẮP NƯỚC
+            </a>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container ms-auto me-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Tìm phim, rạp">
+                <button class="btn btn-outline-light" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Login Button -->
+        <div class="login-container" >
+            <a href="login.html" class="btn btn-outline-light" id="login-button">
+                <i class="fas fa-user"></i> Đăng nhập
+            </a>
+        </div>
+        
+    </div>
+
+</header>
+
+<!-- <script>
+    console.log("script loaded");
+    document.addEventListener("DOMContentLoaded", function () {
+        console.log("runnlog===================>");
+        const token = localStorage.getItem('token');
+        let user = null;
+
+        try {
+            user = localStorage.getItem('user');
+        } catch (error) {
+            console.error('Lỗi khi parse user:', error);
+        }
+
+        const userDiv = document.getElementById('user');
+
+        if (token && user) {
+            userDiv.innerHTML = `
+                <a href="account_profile.html" class="btn btn-outline-light">
+                    <i class="fas fa-user"></i> Chào ${user}
+                </a>`;
+        } else {
+            userDiv.innerHTML = `
+                <a href="login.html" class="btn btn-outline-light">
+                    <i class="fas fa-user"></i> Đăng nhập
+                </a>`;
+        }
+    });
+</script> -->
+    

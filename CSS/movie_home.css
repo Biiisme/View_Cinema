@@ -1,0 +1,339 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #0a0e1a 0%, #1a1a3a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: #0a0e1a;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+.ticket-buttons .btn {
+    background-color: #6a3de8;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+}
+
+.search-container .form-control {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px 0 0 20px;
+}
+
+.search-container .btn {
+    border-radius: 0 20px 20px 0;
+    background-color: #ffffff;
+    color: #0a0e1a;
+}
+
+.login-container .btn, .dropdown .btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+    background-color: #0a0e1a;
+    padding: 0;
+}
+
+.secondary-nav .nav-link {
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+.secondary-nav .nav-link:hover {
+    color: #6a3de8;
+}
+
+/* Booking Section */
+.booking-section {
+    padding: 20px 0;
+}
+
+.booking-container {
+    background-color: #111529;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.booking-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.booking-container .dropdown .btn {
+    background-color: #ffffff;
+    color: #111529;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    position: relative;
+}
+
+.booking-container .dropdown .btn::after {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.book-now-btn {
+    background-color: #6a3de8;
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    text-transform: uppercase;
+}
+
+/* Now Showing Section */
+.now-showing-section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.movie-card {
+    background-color: transparent;
+    margin-bottom: 30px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-poster {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster img {
+    transform: scale(1.05);
+}
+
+.rating-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rating-icon {
+    background-color: #ff9800;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.rating-text {
+    background-color: #ff4d4d;
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.rating-text:contains('K') {
+    background-color: #4caf50;
+}
+
+.rating-text:contains('T16') {
+    background-color: #ff9800;
+}
+
+.movie-date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.movie-info {
+    padding: 15px 0;
+}
+
+.movie-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.movie-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-trailer {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.btn-booking {
+    background-color: #ffdd00;
+    color: #111529;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Carousel Navigation */
+
+
+.carousel-indicator {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-right: 15%;
+    margin-bottom: 1rem;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background-color: #ffffff;
+}
+
+/* See More Button */
+.btn-see-more {
+    background-color: transparent;
+    border: 2px solid #6a3de8;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-see-more:hover {
+    background-color: #6a3de8;
+    color: #ffffff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .booking-title {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .booking-container .dropdown, .book-now-btn {
+        margin-bottom: 10px;
+    }
+    
+    .movie-card {
+        margin-bottom: 30px;
+    }
+    
+    .movie-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-trailer, .btn-booking {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .ticket-buttons, .search-container, .login-container {
+        margin: 10px 0;
+    }
+    
+    .secondary-nav .navbar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .secondary-nav .nav-item {
+        width: 50%;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .secondary-nav .nav-item {
+        width: 100%;
+    }
+    
+    .movie-card {
+        margin-bottom: 20px;
+    }
+}

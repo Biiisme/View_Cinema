@@ -1,0 +1,385 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a3a 0%, #0a0a20 100%);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Payment Page Container */
+.payment-page-container {
+    padding: 20px 0;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* Progress Steps */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.step-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #ffdd00;
+}
+
+.step.completed .step-number {
+    background-color: #ffdd00;
+    color: #1a1a3a;
+}
+
+.step.active .step-number {
+    background-color: #ffdd00;
+    color: #1a1a3a;
+}
+
+.step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #333;
+    position: relative;
+    z-index: 0;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.payment-method-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.payment-method-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.payment-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.payment-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Discount Code Section */
+.discount-code-section {
+    margin-bottom: 30px;
+}
+
+.discount-code-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.discount-code-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.discount-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffdd00;
+    font-size: 1.5rem;
+}
+
+.discount-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.discount-sublabel {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn-back {
+    background-color: #ffdd00;
+    color: #1a1a3a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 30px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-back:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-payment {
+    background-color: #666;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 30px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.btn-payment:hover {
+    background-color: #777;
+    transform: translateY(-2px);
+}
+
+/* Order Summary */
+.order-summary {
+    background-color: rgba(30, 87, 153, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+}
+
+.movie-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.movie-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    flex: 1;
+}
+
+.time-remaining {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.countdown {
+    font-weight: 700;
+    color: #ffdd00;
+}
+
+.age-restriction {
+    font-size: 0.9rem;
+    color: #ffdd00;
+    margin-bottom: 15px;
+}
+
+.theater-info {
+    margin-bottom: 15px;
+}
+
+.theater-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.theater-address {
+    font-size: 0.9rem;
+    color: #dddddd;
+}
+
+.showtime-info {
+    margin-bottom: 15px;
+}
+
+.showtime-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffdd00;
+}
+
+.showtime-value {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.ticket-details, .seat-details, .extras {
+    margin-bottom: 15px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: #ffdd00;
+}
+
+.detail-value {
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-align: center;
+    flex: 1;
+}
+
+.total-amount {
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.total-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffdd00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .step-label {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .step-label {
+        font-size: 0.6rem;
+    }
+    
+    .movie-title {
+        font-size: 1.1rem;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title {
+        font-size: 1.3rem;
+    }
+    
+    .progress-steps {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .step-line {
+        width: 2px;
+        height: 20px;
+    }
+    
+    .movie-title-section {
+        flex-direction: column;
+    }
+    
+    .time-remaining {
+        align-self: flex-start;
+    }
+}
