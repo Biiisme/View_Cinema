@@ -21,3 +21,25 @@ class HeaderComponent extends HTMLElement {
   }
   
   customElements.define('header-component', HeaderComponent);
+
+ class SidebarComponent extends HTMLElement {
+  connectedCallback() {
+    fetch('/Layout/sidebar.html')
+      .then(res => res.text())
+      .then(html => {
+        this.innerHTML = html;
+
+        // Gắn sự kiện sau khi innerHTML xong
+        const submenuLinks = this.querySelectorAll(".sidebar-item.has-submenu > .sidebar-link");
+        submenuLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const parentItem = link.parentElement;
+            parentItem.classList.toggle("open");
+          });
+        });
+      });
+  }
+}
+
+customElements.define('sidebar-component', SidebarComponent);
