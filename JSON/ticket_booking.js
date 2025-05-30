@@ -56,6 +56,8 @@
   });
 
   function loadBookingInfo(data) {
+    document.getElementById("seat-name").innerText = data.seat_name.join(", ");
+    
     fetch("http://localhost:3000/api/film/" + encodeURIComponent(data.film_id))
         .then(res => res.json())
         .then(res => {
@@ -73,13 +75,51 @@
     fetch("http://localhost:3000/api/schedules/detail/" + encodeURIComponent(data.schedule_id))
         .then(res => res.json())
         .then(res => {
-            const data = res.Data;
-
-            document.querySelector(".movie-title").innerText = data.title;
-            
+            const data = res.data;
+            const formattedShowTime = formatShowTime(data.showTime);
+ 
+            document.getElementById("showtime").innerText = formattedShowTime;
+            document.getElementById("room-name").innerText = data.room.room_name;
+            document.getElementById("cinema-name").innerText = data.cinema.cinema_name
+            document.getElementById("cinema-address").innerText = data.cinema.cinema_address
         })
         .catch(err => {
             console.error("Lỗi khi load dữ liệu giữ ghế:", err);
             alert("Không thể load thông tin giữ ghế.");
         });
   }
+
+function formatShowTime(isoString) {
+  const date = new Date(isoString);
+
+  const time = date.toLocaleTimeString('vi-VN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
+  const weekday = date.toLocaleDateString('vi-VN', {
+    weekday: 'long'
+  });
+
+  const dayMonthYear = date.toLocaleDateString('vi-VN', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+
+  return `${time} ${capitalizeFirstLetter(weekday)} ${dayMonthYear}`;
+}
+
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const visaMethod = document.getElementById('method-visa');
+    const visaModal = new bootstrap.Modal(document.getElementById('visaPaymentModal'));
+
+    visaMethod.addEventListener('click', function () {
+        visaModal.show();
+    });
+});

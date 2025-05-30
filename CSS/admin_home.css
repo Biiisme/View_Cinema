@@ -38,44 +38,6 @@ body {
     position: relative;
 }
 
-/* =========== NAVBAR STYLES =========== */
-.navbar {
-    background: linear-gradient(to right, var(--primary-color), var(--primary-light));
-    height: var(--header-height);
-    padding: 0 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-}
-
-.navbar-toggler {
-    color: white;
-    border: none;
-    padding: 8px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
-}
-
-.nav-link {
-    color: white !important;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 4px;
-    transition: background-color var(--transition-speed) ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-link i {
-    margin-right: 5px;
-}
 
 /* =========== DASHBOARD CONTENT STYLES =========== */
 .dashboard-content {

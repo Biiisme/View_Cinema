@@ -43,3 +43,15 @@ class HeaderComponent extends HTMLElement {
 }
 
 customElements.define('sidebar-component', SidebarComponent);
+
+class NavbarComponent extends HTMLElement {
+  connectedCallback() {
+    fetch('/Layout/navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        this.innerHTML = html;
+
+      });
+  }
+}
+customElements.define('navbar-component', NavbarComponent);

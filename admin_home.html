@@ -14,6 +14,46 @@
     <link rel="stylesheet" href="CSS/admin_home.css">
     <script src="JSON/header-component.js"></script>
 </head>
+<style>
+    .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-card.success {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .stats-card.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .stats-card.info {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+        
+        .stats-card.danger {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+        }
+        .filter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+</style>
 <body>
     <div class="admin-container">
         <!-- Sidebar -->
@@ -22,126 +62,81 @@
         <!-- Main Content -->
         <div class="main-content">
             <!-- Top Navbar -->
-            <nav class="navbar navbar-expand navbar-dark">
-                <div class="container-fluid">
-                    <button class="navbar-toggler d-lg-none" type="button" id="mobileToggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-sign-in-alt"></i> Đăng nhập
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <navbar-component></navbar-component>
 
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="container-fluid">
-                    <h1 class="page-title">Quản lý bán hàng</h1>
-
-                    <!-- Stats Cards -->
-                    <div class="row stats-cards">
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card stats-card bg-info text-white">
-                                <div class="card-body">
-                                    <div class="stats-info">
-                                        <h2 class="stats-number">1,578</h2>
-                                        <p class="stats-text">Khách hàng</p>
-                                    </div>
-                                    <div class="stats-icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
+                    <h1 class="page-title">Thống kê rạp chiếu phim</h1>
+                    
+                    <div class="filter-section">
+                    <div class="row align-items-end">
+                        <div class="col-md-3">
+                            <label class="form-label">Khoảng thời gian</label>
+                            <select class="form-select" id="timeRange">
+                                <option value="7">7 ngày qua</option>
+                                <option value="30" selected>30 ngày qua</option>
+                                <option value="90">3 tháng qua</option>
+                                <option value="365">1 năm qua</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Từ ngày</label>
+                            <input type="date" class="form-control" id="startDate">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Đến ngày</label>
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-filter me-2"></i>Lọc dữ liệu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row mb-4">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stats-card">
+                                <div class="stats-icon">
+                                    <i class="fas fa-ticket-alt"></i>
                                 </div>
-                                <div class="card-footer">
-                                    <a href="#" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                <div class="stats-number">1,247</div>
+                                <div class="stats-label">Tổng vé đã bán</div>
                             </div>
                         </div>
-
-                        <!-- <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card stats-card bg-success text-white">
-                                <div class="card-body">
-                                    <div class="stats-info">
-                                        <h2 class="stats-number">158,000 <span class="currency">VND</span></h2>
-                                        <p class="stats-text">Doanh thu trong tháng</p>
-                                    </div>
-                                    <div class="stats-icon">
-                                        <i class="fas fa-money-bill-wave"></i>
-                                    </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stats-card success">
+                                <div class="stats-icon">
+                                    <i class="fas fa-money-bill-wave"></i>
                                 </div>
-                                <div class="card-footer">
-                                    <a href="#" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card stats-card bg-success text-white">
-                                <div class="card-body">
-                                    <div class="stats-info">
-                                        <h2 class="stats-number">240,000 <span class="currency">VND</span></h2>
-                                        <p class="stats-text">Doanh thu trong ngày</p>
-                                    </div>
-                                    <div class="stats-icon">
-                                        <i class="fas fa-calendar-day"></i>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                <div class="stats-number">83.100.000VND</div>
+                                <div class="stats-label">Doanh thu tháng này</div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card stats-card bg-warning text-white">
-                                <div class="card-body">
-                                    <div class="stats-info">
-                                        <h2 class="stats-number">240,000 <span class="currency">VND</span></h2>
-                                        <p class="stats-text">Doanh thu trong ngày</p>
-                                    </div>
-                                    <div class="stats-icon">
-                                        <i class="fas fa-calendar-day"></i>
-                                    </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stats-card warning">
+                                <div class="stats-icon">
+                                    <i class="fas fa-users"></i>
                                 </div>
-                                <div class="card-footer">
-                                    <a href="#" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                <div class="stats-number">892</div>
+                                <div class="stats-label">Khách hàng mới</div>
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-lg-3 mb-4">
-                            <div class="card stats-card bg-danger text-white">
-                                <div class="card-body">
-                                    <div class="stats-info">
-                                        <h2 class="stats-number">65</h2>
-                                        <p class="stats-text">Đơn hàng chờ xử lý</p>
-                                    </div>
-                                    <div class="stats-icon">
-                                        <i class="fas fa-shopping-cart"></i>
-                                    </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stats-card info">
+                                <div class="stats-icon">
+                                    <i class="fas fa-percentage"></i>
                                 </div>
-                                <div class="card-footer">
-                                    <a href="#" class="text-white">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                                <div class="stats-number">78.5%</div>
+                                <div class="stats-label">Tỷ lệ lấp đầy</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Revenue Chart -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card chart-card">
-                                <div class="card-header">
-                                    <h5 class="card-title">Thống kê doanh thu</h5>
-                                </div>
-                                <div class="card-body">
-                                    <canvas id="revenueChart" height="100"></canvas>
-                                </div>
-                            </div>
+                    <div class="col-lg-8">
+                        <div class="chart-container">
+                            <h3 class="chart-title">Doanh Thu Theo Tháng</h3>
+                            <canvas id="revenueChart" height="130" width="200"></canvas>
                         </div>
                     </div>
                 </div>
@@ -156,3 +151,61 @@
    
 </body>
 </html>
+<script>
+    // Set default dates
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const thirtyDaysAgo = new Date(today.getTime() - (30 * 24 * 60 * 60 * 1000));
+            
+            document.getElementById('endDate').value = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = thirtyDaysAgo.toISOString().split('T')[0];
+        });
+
+        // Filter functionality
+        document.getElementById('timeRange').addEventListener('change', function() {
+            const days = parseInt(this.value);
+            const today = new Date();
+            const startDate = new Date(today.getTime() - (days * 24 * 60 * 60 * 1000));
+            
+            document.getElementById('endDate').value = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
+        });
+
+    // Revenue Chart (Bar Chart)
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+                datasets: [{
+                    label: 'Doanh thu (triệu VNĐ)',
+                    data: [85, 92, 78, 105, 118, 125, 132, 128, 115, 98, 87, 95],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                    borderColor: 'rgb(102, 126, 234)',
+                    borderWidth: 1,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+</script>

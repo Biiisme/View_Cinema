@@ -214,6 +214,7 @@ async function renderSeats(roomId) {
       seatDiv.setAttribute("data-seat", seat.id);
       seatDiv.setAttribute("data-seat-id", seat.id);
       seatDiv.textContent = seat.seatNumber;
+      seatDiv.setAttribute("data-seat-name", seat.seatNumber);
 
       if (seat.type === "couple") seatDiv.classList.add("couple");
       if (seat.status === "booked") seatDiv.classList.add("reserved");
@@ -251,8 +252,13 @@ function getSelectedSeats() {
     .map(seat => seat.dataset.seat);
 }
 
+function getSelectedNameSeats() {
+  const selectedSeats = document.querySelectorAll(".seat.selected");
+  return Array.from(selectedSeats).map(seat => seat.getAttribute("data-seat-name"));
+}
+
 // Giữ ghế
-async function holdSeats(film_id, schedule_id, seats) {
+async function holdSeats(film_id, schedule_id, seats ,seats_Number) {
   const token = localStorage.getItem("token");
   try {
     const response = await fetch("http://localhost:3000/customer/hold-seat", {
@@ -264,7 +270,8 @@ async function holdSeats(film_id, schedule_id, seats) {
       body: JSON.stringify({
         film_id: parseInt(film_id),
         schedule_id: parseInt(schedule_id),
-        seats: seats.map(id => parseInt(id))
+        seats: seats.map(id => parseInt(id)),
+        seat_name : seats_Number.map(id=>id)
       })
     });
 
@@ -287,6 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const film_id = getFilmIdFromUrl();
     const schedule_id = getSelectedScheduleId();
     const seats = getSelectedSeats();
+    const seats_number = getSelectedNameSeats();
 
     if (!film_id || !schedule_id || seats.length === 0) {
       alert("Vui lòng chọn lịch chiếu và ít nhất 1 ghế!");
@@ -296,6 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(schedule_id);
     console.log(seats);
     
-    holdSeats(film_id, schedule_id, seats);
+    holdSeats(film_id, schedule_id, seats,seats_number);
   });
 });

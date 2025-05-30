@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDTShop - Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/admin_home.css">
+    <script src="JSON/header-component.js"></script>
+</head>
+<style>
+    :root {
+            --primary: #3f51b5;
+            --primary-dark: #303f9f;
+            --secondary: #ff4081;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --success: #4caf50;
+            --danger: #f44336;
+            --warning: #ff9800;
+            --info: #2196f3;
+        }
+    .movie-poster {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    .movie-title {
+        font-weight: 500;
+        color: var(--primary);
+    }
+    .badge-custom {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    .badge-active {
+        background-color: rgba(58, 186, 62, 0.1);
+        color: var(--success);
+        border: 1px solid rgba(76, 175, 80, 0.2);
+    }
+    
+    .badge-inactive {
+        background-color: rgba(244, 67, 54, 0.1);
+        color: var(--danger);
+        border: 1px solid rgba(244, 67, 54, 0.2);
+    }
+    
+    .badge-upcoming {
+        background-color: rgba(33, 150, 243, 0.1);
+        color: var(--info);
+        border: 1px solid rgba(33, 150, 243, 0.2);
+    }
+    
+    .action-buttons .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }    
+</style>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <sidebar-component></sidebar-component>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navbar -->
+             <navbar-component></navbar-component>
+            <div class="container mt-4" >
+                <div class="" style="display: flex; margin-bottom: 10px;">
+                    <h2>Danh sách lịch chiếu</h2>
+                    <button class="btn btn-primary" id="btnAddMovie" style="margin-left: 65%;">
+                        <i class="fas fa-plus"></i> Thêm lịch chiếu
+                    </button>
+                </div>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th width="5%">STT</th>
+                    <th width="25%">Phim</th>
+                    <th width="15%">Ngày chiếu</th>
+                    <th width="7%">Giờ chiếu</th>
+                    <th width="10%">Rạp</th>
+                    <th width="8%">Phòng</th>
+                    <th width="10%">Giá vé</th>
+                    <th width="10%">Trạng thái</th>
+                    <th width="10%">Thao tác</th>
+                </tr>
+                </thead>
+                <tbody id="schedule-list">
+                <!-- Dữ liệu phim sẽ được JS chèn vào đây -->
+                    <tr>
+                            <td>1</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://cinestar.com.vn/_next/image/?url=https%3A%2F%2Fapi-website.cinestar.com.vn%2Fmedia%2Fwysiwyg%2FPosters%2F04-2025%2Fgau-yeu-cua-anh.jpg&w=1920&q=75?height=400&width=300" alt="Movie Poster" class="movie-poster">
+                                    <div>
+                                        <div class="movie-title">Avengers: Endgameaaaaaaaaaaaaa</div>
+                                        <small class="text-muted">181 phút</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>15/05/2023</td>
+                            <td>10:30</td>
+                            <td>CinestarHue</td>
+                            <td>Phòng 1</td>
+                            <td>90.000 đ</td>
+                            <td>
+                                <span class="badge-custom badge-active">Đang chiếu</span>
+                            </td>
+                            <td class="action-buttons">
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editScheduleModal">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteScheduleModal">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pagination justify-content-center" id="pagination">
+                    <!-- Các nút phân trang sẽ được thêm bằng JS -->
+                </ul>
+            </nav>
+            </div>  
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="JSON/admin_schedule_list.js"></script>
+   
+</body>
+</html>
