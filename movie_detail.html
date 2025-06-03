@@ -57,14 +57,7 @@
                                 <i class="far fa-clock text-warning"></i>
                                 <span id="movieDuration"></span>
                             </li>
-                            <li>
-                                <i class="fas fa-globe text-warning"></i>
-                                <span id="movieCountry"></span>
-                            </li>
-                            <li>
-                                <i class="fas fa-language text-warning"></i>
-                                <span id="movieLanguage"></span>
-                            </li>
+                            
                             <li>
                                 <i class="fas fa-users text-warning"></i>
                                 <span id="movieAgeRating" class="age-rating"></span>
@@ -83,19 +76,28 @@
                         <div class="movie-plot">
                             <h2 class="section-title">NỘI DUNG PHIM</h2>
                             <p id="moviePlot"></p>
-                            <a href="#" class="read-more">Xem thêm</a>
                         </div>
     
                         <!-- Watch Trailer Button -->
-                        <div class="trailer-button-container">
-                            <a href="#" id="trailerLink" class="btn btn-trailer" target="_blank">
-                                <i class="fas fa-play-circle"></i> Xem Trailer
-                            </a>
-                        </div>
+                        <button id="trailerButton" class="btn btn-trailer" data-bs-toggle="modal" data-bs-target="#trailerModal">
+                            <i class="fas fa-play-circle"></i> Xem Trailer
+                        </button>
 
-                        <div id="trailerContainer" class="ratio ratio-16x9 mt-3" style="display: none;">
-                            <iframe id="trailerVideo" src="" title="Trailer Video"
-                                allowfullscreen allow="autoplay"></iframe>
+                        <!-- Trailer Modal -->
+                        <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content bg-dark text-white">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title" id="trailerModalLabel">Trailer</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div class="ratio ratio-16x9">
+                                <iframe id="trailerVideo" src="" title="Trailer" allowfullscreen allow="autoplay"></iframe>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

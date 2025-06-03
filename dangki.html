@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="CSS/style1.css">
+</head>
+<body>
+    <div class="container">
+        <form class="register-form" id="registrationForm">
+            <h2>Đăng Ký</h2>
+            <label for="username">UserName:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Nhập lại mật khẩu:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            
+            <button type="submit">Tạo tài khoản</button>
+            <a href="login.html">bạn đã có tài khoản</a>
+            <p id="responseMessage"></p> <!-- Nơi hiển thị thông báo phản hồi -->
+        </form>
+        <div class="image-section">
+            <img src="IMG/logo.png" alt="Cute monster with popcorn and drink">
+        </div>
+        
+    </div>
+
+    <script>
+            // Hàm xử lý gửi dữ liệu từ form đăng ký đến API
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn việc submit form truyền thống
+    
+            // Lấy giá trị từ các trường nhập liệu
+            const fullname = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+    
+            // Kiểm tra xem mật khẩu và mật khẩu xác nhận có khớp nhau không
+            if (password !== confirmPassword) {
+                document.getElementById('responseMessage').innerText = 'Mật khẩu không khớp, vui lòng kiểm tra lại.';
+                return; // Dừng lại nếu mật khẩu không khớp
+            }
+    
+            // Dữ liệu cần gửi
+            const formData = {
+                FullName: fullname,
+                Email: email,
+                Password: password
+            };
+    
+            // Gọi API đăng ký
+            fetch('http://localhost:3000/api/user/sign-up', { // URL API đăng ký
+                method: 'POST',
+               
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData) // Chuyển dữ liệu thành JSON
+            })
+            .then(response => {
+                // Kiểm tra nếu phản hồi không ở dạng JSON hợp lệ
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hiển thị toàn bộ phản hồi để debug
+                console.log('Response from API:', data);
+                
+                // Kiểm tra phản hồi từ API và hiển thị thông báo
+                if (data.message) {
+                    document.getElementById('responseMessage').innerText = data.message;
+                } else {
+                    document.getElementById('responseMessage').innerText = 'Đăng ký thành công!';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('responseMessage').innerText = 'Đã xảy ra lỗi trong quá trình đăng ký.';
+            });
+        });
+    </script>
+    
+</body>
+</html>

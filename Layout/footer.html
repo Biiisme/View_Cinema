@@ -1,0 +1,414 @@
+
+<style>
+        /* Footer Styles */
+        .footer-section {
+            background-color: #0a0e1a;
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            margin-top: 50px;
+        }
+        
+        .footer-logo img {
+            max-height: 60px;
+            
+        }
+        
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #6a3de8;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #6a3de8;
+        }
+        
+        .footer-contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-contact-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: #6a3de8;
+            flex-shrink: 0;
+            width: 16px;
+            margin-top: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-link:hover {
+            color: #6a3de8;
+            padding-left: 5px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .payment-icon {
+            height: 30px;
+            width: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .footer-certification {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .certification-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: #6a3de8;
+            font-weight: 600;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: rgba(106, 61, 232, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .newsletter-input:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: #6a3de8;
+            box-shadow: 0 0 0 0.2rem rgba(106, 61, 232, 0.25);
+            color: #ffffff;
+        }
+        
+        .newsletter-btn {
+            background-color: #6a3de8;
+            border: none;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #5a2dd8;
+            color: #ffffff;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .footer-certification {
+                justify-content: flex-start;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-section {
+                padding: 40px 0 20px;
+            }
+            
+            .footer-bottom {
+                text-align: center;
+            }
+            
+            .footer-certification {
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .social-links {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .payment-methods {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-heading {
+                text-align: center;
+            }
+            
+            .footer-heading:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links {
+                text-align: center;
+            }
+            
+            .footer-contact-list {
+                text-align: center;
+            }
+            
+            .footer-contact-list li {
+                justify-content: center;
+            }
+        }
+</style>
+
+<body>
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <div class="footer-logo mb-3">
+                        <img src="/IMG/logo1.png"  class="">
+                    </div>
+                    <p class="footer-text">
+                        Hệ thống rạp chiếu phim hiện đại với trải nghiệm điện ảnh tuyệt vời và dịch vụ chất lượng hàng đầu tại Việt Nam.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" title="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h4 class="footer-heading">Liên Hệ</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-phone contact-icon"></i>
+                            <span>0388197765</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <span>thangphan19022003@gmail.com.vn</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <span>25 Hai Bà Trưng, P. Vĩnh Ninh, TP. Huế</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock contact-icon"></i>
+                            <span>Mở cửa: 8:00 - 23:00 hàng ngày</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Company Links -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h4 class="footer-heading">BiCinestar</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#" class="footer-link">Giới thiệu</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Tin tức & Ưu đãi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Hệ thống rạp</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Tuyển dụng</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Liên hệ quảng cáo</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Điều khoản sử dụng</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-heading">Chăm Sóc Khách Hàng</h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#" class="footer-link">Hỏi đáp thường gặp</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Hướng dẫn đặt vé</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Chính sách bảo mật</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Quy định thanh toán</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">Chính sách hoàn tiền</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Newsletter Subscription -->
+                    <div class="newsletter-section">
+                        <h6 class="mb-2" style="color: #ffffff; font-weight: 600;">Đăng ký nhận tin</h6>
+                        <div class="input-group">
+                            <input type="email" class="form-control newsletter-input" placeholder="Email của bạn">
+                            <button class="btn newsletter-btn" type="button">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            © 2025 BiCinestar. Tất cả quyền được bảo lưu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Newsletter Subscription Script -->
+    <script>
+        document.querySelector('.newsletter-btn').addEventListener('click', function() {
+            const emailInput = document.querySelector('.newsletter-input');
+            const email = emailInput.value.trim();
+            
+            if (email && email.includes('@')) {
+                alert('Cảm ơn bạn đã đăng ký nhận tin từ Cinestar!');
+                emailInput.value = '';
+            } else {
+                alert('Vui lòng nhập địa chỉ email hợp lệ!');
+            }
+        });
+        
+        // Enter key support for newsletter
+        document.querySelector('.newsletter-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.newsletter-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>

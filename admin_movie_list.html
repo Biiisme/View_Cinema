@@ -14,6 +14,36 @@
     <link rel="stylesheet" href="CSS/admin_home.css">
     <script src="JSON/header-component.js"></script>
 </head>
+<style>
+     .badge-custom {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    .badge-active {
+        background-color: rgba(58, 186, 62, 0.1);
+        color: var(--success);
+        border: 1px solid rgba(76, 175, 80, 0.2);
+    }
+    
+    .badge-inactive {
+        background-color: rgba(244, 67, 54, 0.1);
+        color: var(--danger);
+        border: 1px solid rgba(244, 67, 54, 0.2);
+    }
+    
+    .badge-upcoming {
+        background-color: rgba(33, 150, 243, 0.1);
+        color: var(--info);
+        border: 1px solid rgba(33, 150, 243, 0.2);
+    }
+    
+    .action-buttons .btn {
+        padding: 5px 10px;
+        font-size: 14px;
+    }    
+</style>
 <body>
     <div class="admin-container">
         <!-- Sidebar -->
@@ -26,7 +56,7 @@
             <div class="container mt-4" >
                 <div class="" style="display: flex; margin-bottom: 10px;">
                     <h2>Danh sách phim</h2>
-                    <button class="btn btn-success" id="btnAddMovie" style="margin-left: 70%;">
+                    <button class="btn btn-info" id="btnAddMovie" style="margin-left: 70%;">
                         <i class="fas fa-plus"></i> Thêm phim
                     </button>
                 </div>
@@ -40,11 +70,8 @@
                     <th>Thể loại</th>
                     <th>Đạo diễn</th>
                     <th>Thời lượng</th>
-                    <th>Ngày khởi chiếu</th>
-                    <th>Ngày kết thúc</th>
+                    <th>Ngày khởi chiếu</th>            
                     <th>Trạng thái</th>
-                    <th>Xếp hạng TB</th>
-                    <th>Số lượt đánh giá</th>
                     <th>Hành động</th>
                 </tr>
                 </thead>

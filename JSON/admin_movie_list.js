@@ -40,28 +40,27 @@ function renderMovies() {
 
   movies.forEach((movie, index) => {
     const releaseDate = new Date(movie.release_date).toLocaleDateString("vi-VN");
-    const endDate = new Date(movie.end_date).toLocaleDateString("vi-VN");
-    const status = movie.is_now_showing
-      ? "Đang chiếu"
-      : movie.is_coming_soon
-      ? "Sắp chiếu"
-      : "Ngừng chiếu";
+    let status = "";
+    if (movie.is_now_showing) {
+      status = `<span class="badge-custom badge-active">Đang chiếu</span>`;
+    } else if (movie.is_coming_soon) {
+      status = `<span class="badge-custom badge-upcoming">Sắp chiếu</span>`;
+    } else {
+      status = `<span class="badge-custom badge-inactive">Ngừng chiếu</span>`;
+    }
 
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${(currentPage - 1) * pageSize + index + 1}</td>
       <td><img src="${movie.poster_url}" alt="Poster" style="width: 60px; height: auto;"/></td>
       <td>${movie.title || "-"}</td>
-      <td>${Array.isArray(movie.genre) ? movie.genre.join(", ") : "-"}</td>
+      <td>${Array.isArray(movie.genre) ? movie.genre.join(", ") : "Hài hước"}</td>
       <td>${movie.director || "-"}</td>
       <td>${movie.duration} phút</td>
       <td>${releaseDate}</td>
-      <td>${endDate}</td>
       <td>${status}</td>
-      <td>${movie.rating_avg?.toFixed(1) || "0.0"}</td>
-      <td>${movie.rating_count || 0}</td>
       <td>
-        <button class="btn btn-primary btn-sm me-2" onclick="editMovie(${movie.id})">Sửa</button>
+        <button class="btn btn-info btn-sm me-2" onclick="editMovie(${movie.id})">Sửa</button>
         <button class="btn btn-danger btn-sm" onclick="deleteMovie(${movie.id})">Xóa</button>
       </td>
     `;

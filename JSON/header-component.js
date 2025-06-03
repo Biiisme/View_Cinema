@@ -55,3 +55,15 @@ class NavbarComponent extends HTMLElement {
   }
 }
 customElements.define('navbar-component', NavbarComponent);
+
+class FooterComponent extends HTMLElement {
+  connectedCallback() {
+    fetch('/Layout/footer.html')
+      .then(res => res.text())
+      .then(html => {
+        this.innerHTML = html;
+
+      });
+  }
+}
+customElements.define('footer-component', FooterComponent);

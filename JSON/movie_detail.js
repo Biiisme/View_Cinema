@@ -28,17 +28,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("moviePoster").src = data.poster_url;
     document.getElementById("releaseDate").textContent = new Date(data.release_date).toLocaleDateString();
     document.getElementById("movieTitle").textContent = data.title;
-    document.getElementById("movieGenre").textContent = data.genre || "Chưa rõ";
-    document.getElementById("movieDuration").textContent = data.duration + "'";
-    document.getElementById("movieCountry").textContent = data.country || "Chưa rõ";
-    document.getElementById("movieLanguage").textContent = data.language || "Chưa rõ";
-    document.getElementById("movieAgeRating").textContent = data.rated;
+    document.getElementById("movieGenre").textContent = data.genre || "Hài hước , Gia đình";
+    document.getElementById("movieDuration").textContent = data.duration + " phút";
+    // document.getElementById("movieAgeRating").textContent = data.rated;
+    document.getElementById("movieAgeRating").textContent = "T16 - Phim được phổ biến đến người xem từ đủ 16 tuổi trở lên (16+)";
     document.getElementById("ratingText").textContent = data.rated || "T18";
+
     document.getElementById("movieDirector").textContent = data.director;
-    document.getElementById("movieCast").textContent = (data.cast || []).join(", ");
+    document.getElementById("movieCast").textContent = (data.cast || []).join(", ") || "Jirayu Laongmanee, Sananthachat Thanapatpisal, Chinawut Indracusin, Supathat Opas, Kittisak Vechprasarn, Attawut Inthon, Likit Sittiphun,...";
     document.getElementById("moviePremiere").textContent = new Date(data.release_date).toLocaleDateString();
     document.getElementById("moviePlot").textContent = data.description;
-    document.getElementById("trailerLink").href = "https://www.youtube.com/watch?v=";
+    
+      // Lưu videoId (giả sử bạn lưu 'q01Uq_5RveQ')
+    const videoId = data.trailer_url;
+    document.getElementById('trailerButton').setAttribute('data-trailer', videoId);
+
+    // Sự kiện xem trailer
+    document.getElementById('trailerButton').addEventListener('click', function () {
+      const videoId = this.getAttribute('data-trailer');
+      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      document.getElementById('trailerVideo').src = embedUrl;
+    });
 
     // Lấy lịch chiếu phim
     const scheduleRes = await fetch(`http://localhost:3000/api/schedules/film/${filmId}`);
@@ -49,6 +59,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Lỗi khi tải dữ liệu:", err);
     alert("Không thể tải dữ liệu phim.");
   }
+});
+
+// Reset trailer khi đóng modal
+document.getElementById('trailerModal').addEventListener('hidden.bs.modal', function () {
+  document.getElementById('trailerVideo').src = "";
 });
 
 function initDateCards(schedules) {

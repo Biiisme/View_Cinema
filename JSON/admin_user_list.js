@@ -61,7 +61,7 @@ function renderUsers() {
       <td>${birthDate}</td>
       <td>${createdAt}</td>
       <td>
-        <button class="btn btn-warning btn-sm me-2" onclick="editUser(${user.id})">Sửa</button>
+        <button class="btn btn-info btn-sm me-2" onclick="editUser(${user.id})">Sửa</button>
         <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})">Xóa</button>
       </td>
     `;
