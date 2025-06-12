@@ -70,8 +70,11 @@
                     localStorage.setItem("token", data.Data.token);
                     localStorage.setItem("username", data.Data.user.fullName);
                     localStorage.setItem("user_id", data.Data.user.user_id);
-                    window.location.href = 'movie_home.html'; // Trang bạn muốn chuyển đến
-
+                    if (data.Data.user.role == "admin"){
+                         window.location.href = 'admin_home.html';
+                    }else{
+                          window.location.href = 'movie_home.html'; // Trang bạn muốn chuyển đến
+                    }
                 } else {
                     // Hiển thị thông báo lỗi nếu đăng nhập thất bại
                     document.getElementById('responseMessage').innerText = data.Message || 'Đăng nhập thất bại!';

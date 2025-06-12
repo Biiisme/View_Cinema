@@ -22,10 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('birthDate').value = user.birth_date.split('T')[0]; // chuẩn hóa định dạng
       
   })
-  .catch(error => {
-      console.error('Lỗi:', error);
-      alert('Không thể tải thông tin khách hàng. Vui lòng thử lại sau.');
-  });
+  
 });
 
   

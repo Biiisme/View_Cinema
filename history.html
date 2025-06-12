@@ -210,113 +210,14 @@
                             <tr>
                                 <th><i class="fas fa-film me-2"></i>Tên Phim</th>
                                 <th><i class="fas fa-clock me-2"></i>Giờ Chiếu</th>
+                                 <th><i class="fas fa-door-open me-2"></i>Tên Rạp</th>
                                 <th><i class="fas fa-door-open me-2"></i>Tên Phòng</th>
                                 <th><i class="fas fa-chair me-2"></i>Ghế</th>
                                 <th><i class="fas fa-calendar me-2"></i>Ngày Mua</th>
                                 <th><i class="fas fa-qrcode me-2"></i>Mã QR</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="movie-title">Spider-Man: No Way Home</td>
-                                <td class="showtime">
-                                    <div class="time">19:30</div>
-                                    <small class="text-muted">25/12/2023</small>
-                                </td>
-                                <td>
-                                    <span class="room-name">Phòng 1</span>
-                                </td>
-                                <td>
-                                    <span class="seat-info">A12, A13</span>
-                                </td>
-                                <td class="purchase-date">23/12/2023</td>
-                                <td>
-                                    <img class="qr-code" 
-                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLCEfwx8yDcF7yTxiLUwzNAWVSCAY0fQgnblUNHjYxMqVsWb8r4_zNWN0hGhcAPQGGNA&usqp=CAU"
-                                         alt="QR Code"
-                                         title="Mã QR vé">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="movie-title">Dune: Part Two</td>
-                                <td class="showtime">
-                                    <div class="time">21:15</div>
-                                    <small class="text-muted">20/12/2023</small>
-                                </td>
-                                <td>
-                                    <span class="room-name">Phòng 3</span>
-                                </td>
-                                <td>
-                                    <span class="seat-info">F8, F9, F10</span>
-                                </td>
-                                <td class="purchase-date">18/12/2023</td>
-                                <td>
-                                    <img class="qr-code" 
-                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLCEfwx8yDcF7yTxiLUwzNAWVSCAY0fQgnblUNHjYxMqVsWb8r4_zNWN0hGhcAPQGGNA&usqp=CAU"
-                                         alt="QR Code"
-                                         title="Mã QR vé">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="movie-title">Oppenheimer</td>
-                                <td class="showtime">
-                                    <div class="time">18:00</div>
-                                    <small class="text-muted">15/12/2023</small>
-                                </td>
-                                <td>
-                                    <span class="room-name">Phòng 2</span>
-                                </td>
-                                <td>
-                                    <span class="seat-info">G15</span>
-                                </td>
-                                <td class="purchase-date">13/12/2023</td>
-                                <td>
-                                    <img class="qr-code" 
-                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLCEfwx8yDcF7yTxiLUwzNAWVSCAY0fQgnblUNHjYxMqVsWb8r4_zNWN0hGhcAPQGGNA&usqp=CAU"
-                                         alt="QR Code"
-                                         title="Mã QR vé">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="movie-title">Avatar: The Way of Water</td>
-                                <td class="showtime">
-                                    <div class="time">16:30</div>
-                                    <small class="text-muted">10/12/2023</small>
-                                </td>
-                                <td>
-                                    <span class="room-name">Phòng 4</span>
-                                </td>
-                                <td>
-                                    <span class="seat-info">D5, D6</span>
-                                </td>
-                                <td class="purchase-date">08/12/2023</td>
-                                <td>
-                                    <img class="qr-code" 
-                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLCEfwx8yDcF7yTxiLUwzNAWVSCAY0fQgnblUNHjYxMqVsWb8r4_zNWN0hGhcAPQGGNA&usqp=CAU"
-                                         alt="QR Code"
-                                         title="Mã QR vé">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="movie-title">Top Gun: Maverick</td>
-                                <td class="showtime">
-                                    <div class="time">20:45</div>
-                                    <small class="text-muted">05/12/2023</small>
-                                </td>
-                                <td>
-                                    <span class="room-name">Phòng 1</span>
-                                </td>
-                                <td>
-                                    <span class="seat-info">H10, H11</span>
-                                </td>
-                                <td class="purchase-date">03/12/2023</td>
-                                <td>
-                                    <img class="qr-code" 
-                                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgLCEfwx8yDcF7yTxiLUwzNAWVSCAY0fQgnblUNHjYxMqVsWb8r4_zNWN0hGhcAPQGGNA&usqp=CAU"
-                                         alt="QR Code"
-                                         title="Mã QR vé">
-                                </td>
-                            </tr>
+                        <tbody id="ticket-list">
                         </tbody>
                     </table>
                 </div>
@@ -343,7 +244,7 @@
             });
             
             // QR Code click functionality
-            const qrCodes = document.querySelectorAll('.qr-code');
+            const qrCodes = document.getElementById("qr-code");
             qrCodes.forEach(qr => {
                 qr.addEventListener('click', function() {
                     alert('Hiển thị mã QR chi tiết');
@@ -353,4 +254,5 @@
         
     </script>
 </body>
+<script src="JSON/history.js"></script>
 </html>

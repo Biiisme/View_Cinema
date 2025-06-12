@@ -51,6 +51,20 @@ class NavbarComponent extends HTMLElement {
       .then(html => {
         this.innerHTML = html;
 
+        // Sau khi innerHTML xong, mới tìm được logoutBtn
+        const logoutBtn = this.querySelector("#logoutBtn");
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Hiển thị hộp thoại xác nhận
+            const confirmLogout = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            if (confirmLogout) {
+              localStorage.clear();
+              window.location.href = "movie_home.html";
+            }
+          });
+        }
       });
   }
 }

@@ -232,7 +232,7 @@ async function renderSeats(roomId) {
       seatDiv.setAttribute("data-seat-name", seat.seatNumber);
 
       if (seat.type === "couple") seatDiv.classList.add("couple");
-      if (seat.status === "booked") seatDiv.classList.add("reserved");
+      if (seat.Status === "booked") seatDiv.classList.add("reserved");
 
       seatDiv.addEventListener("click", () => {
         if (!seatDiv.classList.contains("reserved")) {
@@ -273,8 +273,13 @@ function getSelectedNameSeats() {
 }
 
 // Giữ ghế
-async function holdSeats(film_id, schedule_id, seats ,seats_Number) {
+async function holdSeats(schedule_id, seats ,seats_Number) {
   const token = localStorage.getItem("token");
+  if(!token){
+    alert("Bạn phải đăng nhập để dùng chức năng này")
+    window.location.href = "login.html";
+    return
+  }
   try {
     const response = await fetch("http://localhost:3000/customer/hold-seat", {
       method: "POST",
@@ -283,7 +288,6 @@ async function holdSeats(film_id, schedule_id, seats ,seats_Number) {
         Authorization: `Bearer ${token}`,
     },
       body: JSON.stringify({
-        film_id: parseInt(film_id),
         schedule_id: parseInt(schedule_id),
         seats: seats.map(id => parseInt(id)),
         seat_name : seats_Number.map(id=>id)
@@ -306,19 +310,18 @@ async function holdSeats(film_id, schedule_id, seats ,seats_Number) {
 // Khi nhấn nút giữ ghế
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("holdSeatBtn")?.addEventListener("click", () => {
-    const film_id = getFilmIdFromUrl();
+  
     const schedule_id = getSelectedScheduleId();
     const seats = getSelectedSeats();
     const seats_number = getSelectedNameSeats();
 
-    if (!film_id || !schedule_id || seats.length === 0) {
+    if (!schedule_id || seats.length === 0) {
       alert("Vui lòng chọn lịch chiếu và ít nhất 1 ghế!");
       return;
     }
-    console.log(film_id);
     console.log(schedule_id);
     console.log(seats);
     
-    holdSeats(film_id, schedule_id, seats,seats_number);
+    holdSeats(schedule_id, seats,seats_number);
   });
 });

@@ -58,17 +58,6 @@
   function loadBookingInfo(data) {
     document.getElementById("seat-name").innerText = data.seat_name.join(", ");
     
-    fetch("http://localhost:3000/api/film/" + encodeURIComponent(data.film_id))
-        .then(res => res.json())
-        .then(res => {
-            const data = res.Data;
-
-            document.querySelector(".movie-title").innerText = data.title;
-        })
-        .catch(err => {
-            console.error("Lỗi khi load dữ liệu giữ ghế:", err);
-            alert("Không thể load thông tin giữ ghế.");
-        });
     const lenSeat = data.seats.length
     document.querySelector(".total-value").innerText = lenSeat*45 + ",000VND";
 
@@ -77,7 +66,8 @@
         .then(res => {
             const data = res.data;
             const formattedShowTime = formatShowTime(data.showTime);
- 
+
+            document.querySelector(".movie-title").innerText = data.film.title;
             document.getElementById("showtime").innerText = formattedShowTime;
             document.getElementById("room-name").innerText = data.room.room_name;
             document.getElementById("cinema-name").innerText = data.cinema.cinema_name
@@ -123,3 +113,54 @@ document.addEventListener('DOMContentLoaded', function () {
         visaModal.show();
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const bookingSessionId = new URLSearchParams(window.location.search).get("bookingSessionId");
+  const token = localStorage.getItem("token");
+
+  const confirmBtn = document.querySelector('#visaPaymentModal .btn-primary');
+
+  confirmBtn.addEventListener('click', () => {
+    const cardNumber = document.getElementById('cardNumber').value.trim();
+    const cardName = document.getElementById('cardName').value.trim();
+    const expiryDate = document.getElementById('expiryDate').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+
+    if (!cardNumber || !cardName || !expiryDate || !cvv) {
+      alert('Vui lòng nhập đầy đủ thông tin thẻ.');
+      return;
+    }
+
+    if (cardNumber !== "0388197765123456") {
+      alert('Số thẻ sai');
+      return;
+    }
+
+    // Gọi API thanh toán
+    bookingticket(bookingSessionId, token).then(() => {
+      alert('Thanh toán thành công!');
+
+      const modal = bootstrap.Modal.getInstance(document.getElementById('visaPaymentModal'));
+      modal.hide();
+
+      document.querySelector('#visaPaymentModal form').reset();
+      window.location.href = `/movie_home.html`;
+    });
+  });
+});
+async function bookingticket(bookingSessionId,token) {
+    const response =await fetch("http://localhost:3000/customer/bookingticket", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          bookingSessionId: bookingSessionId,
+        }),
+      });
+    if (!response.ok) {
+        const err = await response.json();
+        return alert(err.Message);
+      }
+  }
